@@ -23,8 +23,22 @@ const storeInLocal = (req, res) => {
     });
 };
 
+const fs = require('fs');
+const path = require('path');
+
+const listFiles = (req, res) => {
+    const directoryPath = path.join(__dirname, '../notes');
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            return res.status(500).json({ message: 'Unable to scan files', error: err });
+        }
+        res.status(200).json({ files });
+    });
+};
+
 module.exports = {
     buildagain,
     devcheck,
-    storeInLocal
+    storeInLocal,
+    listFiles
 };

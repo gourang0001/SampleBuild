@@ -29,6 +29,7 @@ const upload = multer({
 
 router.get('/buildagain', buildagainController.buildagain);
 router.post('/devcheck', buildagainController.devcheck);
+router.get('/listfiles', buildagainController.listFiles);
 router.post('/storeinlocal', upload.single('data'), buildagainController.storeInLocal);
 
 module.exports = router;
