@@ -12,7 +12,19 @@ const devcheck = (req, res) => {
     });
 };
 
+const storeInLocal = (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    res.status(200).json({
+        message: 'File stored successfully in local folder',
+        file: req.file.filename,
+        path: req.file.path
+    });
+};
+
 module.exports = {
     buildagain,
-    devcheck
+    devcheck,
+    storeInLocal
 };
